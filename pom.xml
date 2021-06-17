@@ -35,12 +35,41 @@
             <version>RELEASE</version>
             <scope>test</scope>
         </dependency>
-
-<!--        <dependency>-->
-<!--            <groupId>com.apple</groupId>-->
-<!--            <artifactId>AppleJavaExtensions</artifactId>-->
-<!--            <version>1.4</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.openapitools</groupId>
+            <artifactId>openapi-generator-maven-plugin</artifactId>
+            <version>3.3.4</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>4.4.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>json-path</artifactId>
+            <version>4.4.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>xml-path</artifactId>
+            <version>4.4.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>json-schema-validator</artifactId>
+            <version>4.4.0</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -48,7 +77,7 @@
             <plugin>
                 <groupId>io.swagger</groupId>
                 <artifactId>swagger-codegen-maven-plugin</artifactId>
-                <version>2.3.1</version>
+                <version>2.4.20</version>
                 <executions>
                     <execution>
                         <goals>
@@ -57,13 +86,13 @@
                         <configuration>
                             <inputSpec>${project.basedir}/src/main/resources/member_registration.yaml</inputSpec>
                             <output>${project.build.directory}/generated-sources</output>
-<!--                            <generateApis>false</generateApis>-->
-<!--                            <generateApiTests>false</generateApiTests>-->
-<!--                            <generateApiDocumentation>false</generateApiDocumentation>-->
-<!--                            <generateModelDocumentation>false</generateModelDocumentation>-->
-<!--                            <generateModels>true</generateModels>-->
-<!--                            <generateModelTests>false</generateModelTests>-->
-<!--                            <generateSupportingFiles>false</generateSupportingFiles>-->
+                            <generateApis>false</generateApis>
+                            <generateApiTests>false</generateApiTests>
+                            <generateApiDocumentation>false</generateApiDocumentation>
+                            <generateModelDocumentation>false</generateModelDocumentation>
+                            <generateModels>true</generateModels>
+                            <generateModelTests>false</generateModelTests>
+                            <generateSupportingFiles>false</generateSupportingFiles>
                             <language>java</language>
                             <configOptions>
                                 <sourceFolder>src/gen/java/main</sourceFolder>
@@ -78,8 +107,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
                 <configuration>
-                    <source>15.0.1</source>
-                    <target>15.0.1</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
 

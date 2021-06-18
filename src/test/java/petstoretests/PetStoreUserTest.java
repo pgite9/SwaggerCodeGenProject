@@ -16,6 +16,7 @@ import java.util.List;
 
 public class PetStoreUserTest extends TestBase {
 
+    String baseUrl = TestBase.getBaseUrlPetStore();
 
     @Test
     public void createPetRequestPostTest() {
@@ -41,22 +42,20 @@ public class PetStoreUserTest extends TestBase {
         Pet createdPet  = RestAssured.given()
                 .contentType("application/json")
                 .body(pet)
-                .post(TestBase.getBaseUrlLocalPetStore()+"/pet")
+                .post(baseUrl+"/pet")
                 .then()
                 .statusCode(200)
                 .extract().body().as(Pet.class);
 
-        //System.out.println(createdPet);
         assertNotNull(createdPet);
 
         Response response = RestAssured.given()
                 .pathParam("id",createdPet.getId())
-                .get(TestBase.getBaseUrlLocalPetStore()+"/pet/{id}")
+                .get(baseUrl+"/pet/{id}")
                 .then()
                 .statusCode(200)
                 .extract().response();
 
-        //System.out.println(response.jsonPath().get().toString());
         System.out.println(response.getBody().as(Pet.class));
 
         assertNotNull("Pet Creation is failed.", response.jsonPath().get().toString());
@@ -70,7 +69,7 @@ public class PetStoreUserTest extends TestBase {
         List<Pet> petListByStatus = RestAssured.given()
                 //.pathParam("status", Pet.StatusEnum.AVAILABLE)
                 .queryParam("status",Pet.StatusEnum.SOLD)
-                .get(TestBase.getBaseUrlLocalPetStore()+"/pet/findByStatus")
+                .get(baseUrl+"/pet/findByStatus")
                 .then()
                 .statusCode(200)
                 .extract().body().jsonPath().getList("$");
